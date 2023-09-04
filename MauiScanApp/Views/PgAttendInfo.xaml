@@ -2,20 +2,17 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiScanApp.Views.PgAttendInfo"
-             Title="PgAttendInfo">
+             Title="出席統計">
     <StackLayout 
         Orientation="Vertical">
         <StackLayout
             Orientation="Vertical"
                      HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand">
-        <Label 
-            Text="票券詳細"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <ActivityIndicator
+            <ActivityIndicator
             x:Name="loader"
-            IsRunning="False"/>
+            IsRunning="False"
+            IsVisible="False"/>
         <Label 
             Text="庫存狀態"
             VerticalOptions="Center" 
@@ -24,6 +21,8 @@
             x:Name="lblStock"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+
+
         <Label 
             Text="報到狀態"
             VerticalOptions="Center" 
@@ -32,8 +31,9 @@
             x:Name="lblAttend"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        
-    </StackLayout>
+
+
+        </StackLayout>
     <StackLayout Orientation="Horizontal"
                      HorizontalOptions="FillAndExpand"
                      VerticalOptions="End"

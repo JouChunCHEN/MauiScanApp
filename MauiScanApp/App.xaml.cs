@@ -1,4 +1,5 @@
 ﻿using MauiScanApp.Models;
+using MauiScanApp.Views;
 
 namespace MauiScanApp;
 
@@ -12,6 +13,6 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new AppShell();
+		MainPage = new PgLogin();
 	}
 }

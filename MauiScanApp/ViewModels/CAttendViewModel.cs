@@ -51,8 +51,8 @@ namespace MauiScanApp.ViewModels
 
             App app = Application.Current as App;
             if (app != null && app.attendLists == null)
-            { 
-                
+            {
+                app.attendLists = _attendList;
             }
                 //CAttendList x = new CAttendList();
                 //x.OrderDetailId = 1;

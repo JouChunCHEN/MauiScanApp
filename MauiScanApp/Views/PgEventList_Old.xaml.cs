@@ -16,6 +16,11 @@ public partial class PgEventList_Old : ContentPage
         base.OnAppearing();
 
         lvOldEvent.ItemsSource = model.getOldEevents();
+        if (model.getOldEevents() == null)
+        {
+            lblTitle.Text = "©|µL¬¡°Ê";
+            lblTitle.IsVisible = true;
+        }
     }
 
     private void lvOldEvent_SelectionChanged(object sender, SelectionChangedEventArgs e)

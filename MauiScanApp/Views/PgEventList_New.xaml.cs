@@ -11,14 +11,14 @@ public partial class PgEventList_New : ContentPage
 	{
 		InitializeComponent();
 	}
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
         App app = Application.Current as App;
         if (app.eventLists == null)
         {
             loader.IsRunning = true;
-            loadProductDetailsAsync();
+            await loadProductDetailsAsync();
         }
     }
     private async Task loadProductDetailsAsync()
@@ -34,6 +34,13 @@ public partial class PgEventList_New : ContentPage
         app.eventLists = await client.GetFromJsonAsync<List<CEvent>>(uri);
         model.All = app.eventLists;
         lvNewEvent.ItemsSource = model.getNewEevents();
+
+        if(model.getNewEevents() == null)
+        {
+            lblTitle.Text = "©|µL¬¡°Ê";
+            lblTitle.IsVisible = true;
+        }
+            
 
         loader.IsRunning = false;
         loader.IsVisible = false;

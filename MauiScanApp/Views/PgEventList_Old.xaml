@@ -2,13 +2,32 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiScanApp.Views.PgEventList_Old"
-             Title="PgEventList_Old">
+             Title="活動一覽">
+    <ContentPage.Resources>
+        <Style TargetType="StackLayout">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="LightYellow" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+    
     <ScrollView>
     <VerticalStackLayout>
         <Label 
-            Text="過去"
+            x:Name="lblTitle"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center"
+            IsVisible="false"/>
         <CollectionView
             x:Name="lvOldEvent"
             SelectionMode="Single"
@@ -17,12 +36,15 @@
             VerticalOptions="FillAndExpand">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                        <Label FontSize="40" TextColor="Blue" Text="{Binding ProductName}"/>
-                        <Label FontSize="25" TextColor="LightBlue" Text="{Binding BeginTime, StringFormat='{}{0:yyyy/MM/dd HH:mm}'}"/>
-                        <Label FontSize="25" TextColor="LightBlue" Text="{Binding EndTime, StringFormat='{}{0:yyyy/MM/dd HH:mm}'}"/>
-                        <Label FontSize="25" TextColor="LightBlue" Text="{Binding Address}"/>
-                    </StackLayout>
+                        <StackLayout 
+                            Orientation="Vertical" 
+                            HorizontalOptions="FillAndExpand"
+                            Padding="15">
+                            <Label FontSize="40" TextColor="#F96F15" Text="{Binding ProductName}"/>
+                            <Label FontSize="20" TextColor="gray" Text="{Binding BeginTime, StringFormat='{}{0:yyyy/MM/dd HH:mm}'}"/>
+                            <Label FontSize="20" TextColor="gray" Text="{Binding EndTime, StringFormat='{}{0:yyyy/MM/dd HH:mm}'}"/>
+                            <Label FontSize="20" Text="{Binding Address}"/>
+                        </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

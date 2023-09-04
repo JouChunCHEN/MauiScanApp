@@ -2,13 +2,27 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiScanApp.Views.PgAttendList"
-             Title="PgAttendList">
+             Title="報名名單">
+    <ContentPage.Resources>
+        <Style TargetType="StackLayout">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="AliceBlue" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+    
     <ScrollView>
         <VerticalStackLayout x:Name="stackLayout">
-            <Label 
-            Text="報名名單"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
             <CollectionView
             x:Name="lvAttendList"
             SelectionMode="Single"
@@ -17,18 +31,24 @@
             VerticalOptions="FillAndExpand">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                        <Label FontSize="40" TextColor="Blue" Text="{Binding Name}"/>
-                        <Label FontSize="25" TextColor="LightBlue" Text="{Binding Email}"/>
-                        <Label FontSize="25" TextColor="LightBlue" Text="{Binding odNumber}"/>
-                        <Image Source="unchecked.png">
-                            <Image.Triggers>
-                                <DataTrigger TargetType="Image" Binding="{Binding IsAttend}" Value="True">
-                                    <Setter Property="Source" Value="checked.png" />
-                                </DataTrigger>
-                            </Image.Triggers>
-                        </Image>
-                    </StackLayout>
+                    <StackLayout Orientation="Vertical" 
+                                 HorizontalOptions="FillAndExpand">
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout Orientation="Vertical"
+                                             HorizontalOptions="FillAndExpand">
+                                    <Label FontSize="30" TextColor="#06B4E5" Text="{Binding Name}"/>
+                                    <Label FontSize="20" TextColor="Gray" Text="{Binding Email}"/>
+                                    <Label FontSize="20" TextColor="Gray" Text="{Binding odNumber}"/>
+                                </StackLayout>
+                                <Image Source="unchecked.png">
+                                    <Image.Triggers>
+                                        <DataTrigger TargetType="Image" Binding="{Binding IsAttend}" Value="True">
+                                            <Setter Property="Source" Value="checked.png" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+                            </StackLayout>
+                        </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

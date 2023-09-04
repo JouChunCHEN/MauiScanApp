@@ -8,7 +8,9 @@
     Shell.FlyoutBehavior="Flyout">
 
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
-        <Tab Title="活動一覽">
+        <Tab
+            Icon="event"
+            Title="活動一覽">
             <ShellContent
                 Title="即將開始"
                 ContentTemplate="{DataTemplate views:PgEventList_New}"
@@ -18,26 +20,11 @@
                 ContentTemplate="{DataTemplate views:PgEventList_Old}" 
                 Route="OldEvent" />
         </Tab>
-        <Tab Title="登出">
-        </Tab>
     </FlyoutItem>
 
-    <!--<TabBar>
-        <Tab Title="報到狀況">
-            <ShellContent
-                                ContentTemplate="{DataTemplate views:PgStatus}"
-                                Route="Status"/>
-        </Tab>
-        <Tab Title="報名名單">
-            <ShellContent
-                                ContentTemplate="{DataTemplate views:PgAttendList}"
-                                Route="AttendList"/>
-        </Tab>
-        <Tab Title="掃描驗票">
-            <ShellContent
-                                ContentTemplate="{DataTemplate views:PgScanTicket}"
-                                Route="ScanTicket"/>
-        </Tab>
-    </TabBar>-->
-    
+        <MenuItem 
+        IconImageSource="logout"
+        Text="登出" 
+        Clicked="MenuItem_Clicked"/>
+
 </Shell>

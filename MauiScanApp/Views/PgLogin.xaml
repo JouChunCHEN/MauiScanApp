@@ -3,24 +3,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiScanApp.Views.PgLogin"
              Title="PgLogin">
-    <VerticalStackLayout>
-        <Label 
-            Text="登入"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    <VerticalStackLayout 
+        x:Name="stackLayout"
+        Margin="30,100,30,0">
+        <Image Source="logo"
+               VerticalOptions="Center"
+               Margin="0,20,0,40"/>
         <Label
-            Text="帳號"/>
+            FontSize="16"
+            TextColor="gray"
+            Text="帳號（統一編號）"/>
         <Entry
             x:Name="txtTaxId"
+            FontSize="16"
+            Margin="0,0,0,20"
             Text="98270077"
             TextChanged="txtTaxId_TextChanged"/>
         <Label
+            FontSize="16"
+            TextColor="Gray"
             Text="密碼"/>
         <Entry
+            x:Name="txtPassword"
             Text="1234"
-            x:Name="txtPassword"/>
+            FontSize="16"
+            Margin="0,0,0,20"/>
+        <Label
+           Text="忘記密碼"
+            HorizontalOptions="End"
+            Margin="0,0,20,20"
+            TextColor="Blue"
+            TextDecorations="Underline"/>
         <Button
             Text="登入"
-            Clicked="Button_Clicked"/>
+            Clicked="Button_Clicked"
+            WidthRequest="200"
+            FontSize="20"
+            BackgroundColor="#06B4E5"/>
     </VerticalStackLayout>
 </ContentPage>

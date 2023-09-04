@@ -54,6 +54,8 @@ public partial class PgAttendInfo : ContentPage
         int odCount = app.attendLists.Count;
         lblStock.Text = $"{odCount}/{stock}";
         lblAttend.Text = $"{model.getAttendedCount()}/{model.getAttendListCount()}";
+        
+
 
         loader.IsRunning = false;
         loader.IsVisible = false;
