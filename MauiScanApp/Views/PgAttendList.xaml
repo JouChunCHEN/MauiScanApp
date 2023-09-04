@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiScanApp.Views.PgAttendList"
+             Title="PgAttendList">
+    <ScrollView>
+        <VerticalStackLayout x:Name="stackLayout">
+            <Label 
+            Text="報名名單"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+            <CollectionView
+            x:Name="lvAttendList"
+            SelectionMode="Single"
+            SelectionChanged ="lvAttendList_SelectionChanged"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                        <Label FontSize="40" TextColor="Blue" Text="{Binding Name}"/>
+                        <Label FontSize="25" TextColor="LightBlue" Text="{Binding Email}"/>
+                        <Label FontSize="25" TextColor="LightBlue" Text="{Binding odNumber}"/>
+                        <Image Source="unchecked.png">
+                            <Image.Triggers>
+                                <DataTrigger TargetType="Image" Binding="{Binding IsAttend}" Value="True">
+                                    <Setter Property="Source" Value="checked.png" />
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Label x:Name="lblTest"></Label>
+    </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

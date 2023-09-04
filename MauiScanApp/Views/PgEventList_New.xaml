@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiScanApp.Views.PgEventList_New"
+             Title="PgEventList_New">
+    <VerticalStackLayout>
+        <Label 
+            Text="即將開始"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <ActivityIndicator
+            x:Name="loader"
+            IsRunning="False"/>
+        <CollectionView
+            x:Name="lvNewEvent"
+            SelectionMode="Single"
+            SelectionChanged="lvNewEvent_SelectionChanged"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                        <Label FontSize="40" TextColor="Blue" Text="{Binding ProductName}"/>
+                        <Label FontSize="25" TextColor="LightBlue" Text="{Binding BeginTime, StringFormat='{}{0:yyyy/MM/dd HH:mm}'}"/>
+                        <Label FontSize="25" TextColor="LightBlue" Text="{Binding EndTime, StringFormat='{}{0:yyyy/MM/dd HH:mm}'}"/>
+                        <Label FontSize="25" TextColor="LightBlue" Text="{Binding Address}"/>
+                    </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        
+    </VerticalStackLayout>
+</ContentPage>

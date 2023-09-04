@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiScanApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiScanApp"
+    xmlns:views="clr-namespace:MauiScanApp.Views"
+    Shell.FlyoutBehavior="Flyout">
+
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <Tab Title="活動一覽">
+            <ShellContent
+                Title="即將開始"
+                ContentTemplate="{DataTemplate views:PgEventList_New}"
+                Route="NewEvent"/>
+            <ShellContent
+                Title="過去活動"
+                ContentTemplate="{DataTemplate views:PgEventList_Old}" 
+                Route="OldEvent" />
+        </Tab>
+        <Tab Title="登出">
+        </Tab>
+    </FlyoutItem>
+
+    <!--<TabBar>
+        <Tab Title="報到狀況">
+            <ShellContent
+                                ContentTemplate="{DataTemplate views:PgStatus}"
+                                Route="Status"/>
+        </Tab>
+        <Tab Title="報名名單">
+            <ShellContent
+                                ContentTemplate="{DataTemplate views:PgAttendList}"
+                                Route="AttendList"/>
+        </Tab>
+        <Tab Title="掃描驗票">
+            <ShellContent
+                                ContentTemplate="{DataTemplate views:PgScanTicket}"
+                                Route="ScanTicket"/>
+        </Tab>
+    </TabBar>-->
+    
+</Shell>

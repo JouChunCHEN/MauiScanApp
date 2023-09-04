@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiScanApp.Views.PgAttendInfo"
+             Title="PgAttendInfo">
+    <StackLayout 
+        Orientation="Vertical">
+        <StackLayout
+            Orientation="Vertical"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand">
+        <Label 
+            Text="票券詳細"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <ActivityIndicator
+            x:Name="loader"
+            IsRunning="False"/>
+        <Label 
+            Text="庫存狀態"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Label 
+            x:Name="lblStock"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Label 
+            Text="報到狀態"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Label 
+            x:Name="lblAttend"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        
+    </StackLayout>
+    <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="End"
+                     BackgroundColor="LightYellow">
+            <ImageButton
+                Source="info"
+                HorizontalOptions="FillAndExpand"
+                Margin="0,5"
+                Clicked="btnInfo_Clicked"/>
+            <ImageButton
+                Source="attend"
+                HorizontalOptions="FillAndExpand"
+                Margin="0,5"
+                Clicked="btnAttendList_Clicked"/>
+            <ImageButton
+                Source="scan"
+                HorizontalOptions="FillAndExpand"
+                Margin="0,5"
+                Clicked="btnScan_Clicked"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
