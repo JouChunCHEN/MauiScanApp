@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiScanApp.Views.PgAttendInfo"
+             xmlns:mdc="clr-namespace:Material.Components.Maui;assembly=Material.Components.Maui"
              Title="出席統計">
     <StackLayout 
         Orientation="Vertical">
@@ -22,8 +23,15 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
+            <mdc:ProgressIndicator 
+                x:Name="pieStock"
+                Style="{DynamicResource CircularProgressIndicatorStyle}"
+                BackgroundColour="Aqua"/>
+            <mdc:ProgressIndicator
+                 x:Name="lineStock"
+                Style="{DynamicResource LinearProgressIndicatorStyle}" />
 
-        <Label 
+            <Label 
             Text="報到狀態"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
