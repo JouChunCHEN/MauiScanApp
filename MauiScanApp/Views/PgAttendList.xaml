@@ -20,39 +20,107 @@
             </Setter>
         </Style>
     </ContentPage.Resources>
-    
-    <ScrollView>
-        <VerticalStackLayout x:Name="stackLayout">
+
+
+    <StackLayout 
+        x:Name="stackLayout"
+        Orientation="Vertical">
+        <StackLayout 
+                    Orientation="Vertical"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    Padding="10">
             <CollectionView
-            x:Name="lvAttendList"
-            SelectionMode="Single"
-            SelectionChanged ="lvAttendList_SelectionChanged"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout Orientation="Vertical" 
+                        x:Name="lvAttendList"
+                        ItemsLayout="VerticalList"
+                        SelectionMode="Single"
+                        SelectionChanged ="lvAttendList_SelectionChanged"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+                    <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="22" />
+                                <RowDefinition Height="22" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70" />
+                                <ColumnDefinition Width="300" />
+                            </Grid.ColumnDefinitions>
+                            <Image 
+                                Grid.RowSpan="3"
+                                HeightRequest="45"
+                                WidthRequest="45"
+                                HorizontalOptions="Center"
+                                Source="unchecked.png">
+                                <Image.Triggers>
+                                    <DataTrigger TargetType="Image" Binding="{Binding IsAttend}" Value="True">
+                                        <Setter Property="Source" Value="checked.png" />
+                                    </DataTrigger>
+                                </Image.Triggers>
+                            </Image>
+                            <Label 
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                FontSize="25"
+                       Text="{Binding Name}"/>
+                            <Label Grid.Row="1"
+                       Grid.Column="1"
+                       Text="{Binding Email}"
+                       VerticalOptions="Center" />
+                            <Label Grid.Row="2"
+Grid.Column="1"
+Text="{Binding odNumber}"
+VerticalOptions="Center" />
+                        </Grid>
+                        <!--<StackLayout Orientation="Horizontal" 
+                                 VerticalOptions="FillAndExpand"
                                  HorizontalOptions="FillAndExpand">
-                            <StackLayout Orientation="Horizontal">
-                                <StackLayout Orientation="Vertical"
+                            <StackLayout Orientation="Vertical"
                                              HorizontalOptions="FillAndExpand">
-                                    <Label FontSize="30" TextColor="#06B4E5" Text="{Binding Name}"/>
-                                    <Label FontSize="20" TextColor="Gray" Text="{Binding Email}"/>
-                                    <Label FontSize="20" TextColor="Gray" Text="{Binding odNumber}"/>
-                                </StackLayout>
-                                <Image Source="unchecked.png">
-                                    <Image.Triggers>
-                                        <DataTrigger TargetType="Image" Binding="{Binding IsAttend}" Value="True">
-                                            <Setter Property="Source" Value="checked.png" />
-                                        </DataTrigger>
-                                    </Image.Triggers>
-                                </Image>
-                            </StackLayout>
-                        </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-        <Label x:Name="lblTest"></Label>
-    </VerticalStackLayout>
-    </ScrollView>
+                                        <Label FontSize="30" TextColor="#06B4E5" Text="{Binding Name}"/>
+                                        <Label FontSize="20" TextColor="Gray" Text="{Binding Email}"/>
+                                        <Label FontSize="20" TextColor="Gray" Text="{Binding odNumber}"/>
+                             </StackLayout> 
+                             <StackLayout
+                                            VerticalOptions="Center"
+                                             HorizontalOptions="End">
+                                    <Image Source="unchecked.png">
+                                        <Image.Triggers>
+                                            <DataTrigger TargetType="Image" Binding="{Binding IsAttend}" Value="True">
+                                                <Setter Property="Source" Value="checked.png" />
+                                            </DataTrigger>
+                                        </Image.Triggers>
+                                    </Image>
+                             </StackLayout>
+                          </StackLayout>-->
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+        </StackLayout>
+
+            <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="End"
+                     BackgroundColor="FloralWhite">
+                <ImageButton
+                Source="info"
+                HorizontalOptions="FillAndExpand"
+                Margin="0,5"
+                Clicked="btnInfo_Clicked"/>
+                <ImageButton
+                Source="attend"
+                HorizontalOptions="FillAndExpand"
+                Margin="0,5"
+                Clicked="btnAttendList_Clicked"/>
+                <ImageButton
+                Source="scan"
+                HorizontalOptions="FillAndExpand"
+                Margin="0,5"
+                Clicked="btnScan_Clicked"/>
+            </StackLayout>
+     </StackLayout>
+    
 </ContentPage>

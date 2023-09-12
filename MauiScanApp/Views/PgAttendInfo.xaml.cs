@@ -55,9 +55,12 @@ public partial class PgAttendInfo : ContentPage
         lblStock.Text = $"{odCount}/{stock}";
         lblAttend.Text = $"{model.getAttendedCount()}/{model.getAttendListCount()}";
 
-        var percent = (float)odCount/ stock;
-        pieStock.Percent = percent*100;
-        lineStock.Percent = percent*100;
+        float percent = (float)odCount/ stock;
+        chartStock.Progress = Convert.ToInt32(percent * 100);
+
+        percent = (float)model.getAttendedCount()/ model.getAttendListCount();
+        chartAttend.Progress = Convert.ToInt32(percent * 100);
+
         loader.IsRunning = false;
         loader.IsVisible = false;
     }

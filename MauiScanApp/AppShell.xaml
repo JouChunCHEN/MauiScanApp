@@ -7,6 +7,17 @@
     xmlns:views="clr-namespace:MauiScanApp.Views"
     Shell.FlyoutBehavior="Flyout">
 
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <StackLayout >
+                <Image
+                     Aspect="AspectFill"
+                       Source="flyout" />
+</StackLayout>
+
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <Tab
             Icon="event"

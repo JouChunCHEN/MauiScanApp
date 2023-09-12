@@ -21,8 +21,16 @@ public partial class PgAttendList : ContentPage
     {
         base.OnAppearing();
 
-        App app = Application.Current as App;
-        lvAttendList.ItemsSource = model.All;
+        
+        //lvAttendList.ItemsSource = model.All;
+        Refresh();
+
+    }
+
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
+
     }
 
     private async void lvAttendList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -74,14 +82,19 @@ public partial class PgAttendList : ContentPage
             message.EnsureSuccessStatusCode();
             if (message.IsSuccessStatusCode)
             {
-                DisplayAlert("Alert", "報到成功", "OK");
+                DisplayAlert("通知", "報到成功", "OK");
             }
             else
             {
-                DisplayAlert("Alert", message.StatusCode.ToString(), "OK");
+                DisplayAlert("通知", message.StatusCode.ToString(), "OK");
             }
         }
 
+        await Refresh();
+    }
+
+    private async Task Refresh()
+    {
         //重整報到畫面
         int? productDetailId = null;
         App app = Application.Current as App;
@@ -94,5 +107,21 @@ public partial class PgAttendList : ContentPage
             model.All = app.attendLists;
             lvAttendList.ItemsSource = app.attendLists;
         };
+
+    }
+
+        private void btnInfo_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PopAsync();
+    }
+
+    private void btnAttendList_Clicked(object sender, EventArgs e)
+    {
+        this.OnAppearing();
+    }
+
+    private void btnScan_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new PgScanTicket());
     }
 }

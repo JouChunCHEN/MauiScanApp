@@ -25,6 +25,7 @@
             Text="密碼"/>
         <Entry
             x:Name="txtPassword"
+            IsPassword="True"
             Text="1234"
             FontSize="16"
             Margin="0,0,0,20"/>

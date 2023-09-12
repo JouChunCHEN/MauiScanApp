@@ -52,6 +52,7 @@
 	  <None Remove="Platforms\Android\Resources\xml\network_security_config.xml" />
 	  <None Remove="Resources\Images\attend.png" />
 	  <None Remove="Resources\Images\checked.png" />
+	  <None Remove="Resources\Images\flyout.png" />
 	  <None Remove="Resources\Images\info.png" />
 	  <None Remove="Resources\Images\logo.png" />
 	  <None Remove="Resources\Images\scan.png" />
@@ -74,6 +75,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Controls\CircularProgressBar.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\PgAttendInfo.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

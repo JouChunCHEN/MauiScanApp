@@ -6,23 +6,30 @@
              Title="掃描驗票">
     <VerticalStackLayout
         x:Name="stackLayout"
-        HorizontalOptions="EndAndExpand">
+        HorizontalOptions="FillAndExpand">
         <cv:CameraView 
                 x:Name="cameraView" 
-                HeightRequest="400"
+                 HeightRequest="500"
                 CamerasLoaded="cameraView_CamerasLoaded"
                 BarCodeDetectionEnabled="True"
-                BarcodeDetected="cameraView_BarcodeDetected"/>
+                BarcodeDetected="cameraView_BarcodeDetected"
+            ZIndex="0"/>
         <Label
                 x:Name="lblBarcode"
                 FontSize="25"/>
+        <Image
+            x:Name="imgQrcode"
+            Source="qrcode"
+            WidthRequest="100"/>
         <Entry
             x:Name="txtQrCode"
-            Text="OD202007080006">
+            Text="OD202309090252"
+            Margin="0,0">
         </Entry>
         <Button
             x:Name="btnScan"
             Text="模擬掃描驗票"
-                Clicked="btnScan_Clicked"/>
+                Clicked="btnScan_Clicked"
+            Margin="50,0"/>
     </VerticalStackLayout>
 </ContentPage>

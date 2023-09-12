@@ -1,3 +1,7 @@
+using Camera.MAUI;
+using MauiScanApp.Models;
+using System.Net.Http.Json;
+
 namespace MauiScanApp.Views;
 
 public partial class PgScanTicket : ContentPage
@@ -53,14 +57,23 @@ public partial class PgScanTicket : ContentPage
 
     private async Task checkQrcode(int productDetailId, string qrcode)
     {
-        HttpClient client = new HttpClient();
-        Uri uri = new Uri($"http://10.0.2.2:5016/api/Attend/ScanQrCode?productDetailId={productDetailId}&qrcode={qrcode}");
-        HttpResponseMessage message = client.GetAsync(uri).Result;
-        string result = message.Content.ReadAsStringAsync().Result;
-        message.EnsureSuccessStatusCode();
-        if (message.IsSuccessStatusCode)
+        using (HttpClient client = new HttpClient())
         {
-            DisplayAlert("Alert", result, "OK");
+            Uri uri = new Uri($"http://10.0.2.2:5016/api/Attend/ScanQrCode?productDetailId={productDetailId}&qrcode={qrcode}");
+            HttpResponseMessage message = client.GetAsync(uri).Result;
+            string result = message.Content.ReadAsStringAsync().Result;
+            message.EnsureSuccessStatusCode();
+            if (message.IsSuccessStatusCode)
+            {
+                DisplayAlert("³qª¾", result, "OK");
+
+                using (HttpClient c = new HttpClient())
+                {
+                    App app = Application.Current as App;
+                    Uri u = new Uri($"http://10.0.2.2:5016/api/OrderDetails/AttendList?id={productDetailId}");
+                    app.attendLists = await c.GetFromJsonAsync<List<CAttendList>>(u);
+                }
+            }
         }
     }
 }

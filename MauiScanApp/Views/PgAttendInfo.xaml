@@ -2,50 +2,88 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiScanApp.Views.PgAttendInfo"
+             xmlns:controls ="clr-namespace:MauiScanApp.Controls"
              xmlns:mdc="clr-namespace:Material.Components.Maui;assembly=Material.Components.Maui"
-             Title="出席統計">
+             Title="名單統計">
     <StackLayout 
         Orientation="Vertical">
         <StackLayout
             Orientation="Vertical"
                      HorizontalOptions="FillAndExpand"
-                     VerticalOptions="FillAndExpand">
+                     VerticalOptions="FillAndExpand"
+            Padding="10">
             <ActivityIndicator
             x:Name="loader"
             IsRunning="False"
             IsVisible="False"/>
-        <Label 
-            Text="庫存狀態"
+         <Label 
+             Margin="0,10,0,10"
+            Text="銷售狀態"
+             FontSize="40"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <Label 
+           <controls:CircularProgressBar
+                x:Name="chartStock"
+               Progress="0"
+                    ProgressColor="#F96F15"
+                    ProgressLeftColor="#FCC048"
+                    Size="140"
+                    TextColor="#F65449"
+                    Thickness="10" />
+            <Label 
             x:Name="lblStock"
+            FontSize="16"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-
-            <mdc:ProgressIndicator 
-                x:Name="pieStock"
-                Style="{DynamicResource CircularProgressIndicatorStyle}"
-                BackgroundColour="Aqua"/>
-            <mdc:ProgressIndicator
-                 x:Name="lineStock"
-                Style="{DynamicResource LinearProgressIndicatorStyle}" />
+            HorizontalOptions="Center" 
+                Margin="0,10,0,0"/>
+           <Label
+               FontSize="12"
+               Text="報名人數/名額上限"
+               TextColor="Gray"
+               VerticalOptions="Center" 
+               HorizontalOptions="Center" />
+            
+            <Border
+                Margin="30"
+                StrokeThickness="1"
+                BackgroundColor="#30C77A"
+                Stroke="#30C77A"/>
 
             <Label 
-            Text="報到狀態"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label 
+                Margin="0,0,0,10" 
+                Text="報到狀態"
+                FontSize="40"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <controls:CircularProgressBar
+          x:Name="chartAttend"
+                Progress="0"
+         ProgressColor="#F96F15"
+         ProgressLeftColor="#FCC048"
+         Size="140"
+         TextColor="#F65449"
+         Thickness="10" />
+
+
+            <Label 
             x:Name="lblAttend"
+            FontSize="16"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-
-
+            HorizontalOptions="Center" 
+            Margin="0,10,0,0" />
+            <Label
+               FontSize="12"
+               Text="已報到/報名人數"
+               TextColor="Gray"
+               VerticalOptions="Center" 
+               HorizontalOptions="Center" />
         </StackLayout>
-    <StackLayout Orientation="Horizontal"
+
+        <StackLayout Orientation="Horizontal"
                      HorizontalOptions="FillAndExpand"
                      VerticalOptions="End"
-                     BackgroundColor="LightYellow">
+                     BackgroundColor="FloralWhite">
             <ImageButton
                 Source="info"
                 HorizontalOptions="FillAndExpand"
